@@ -27,10 +27,12 @@ services:
     networks:
       - manager
   mysql:
-    image: mysql
+    image: mysql:8.0
     container_name: mmysql
     ports:
       - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_DATABASE: $MYSQL_DATABASE
